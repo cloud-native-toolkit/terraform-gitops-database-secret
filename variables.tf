@@ -79,3 +79,35 @@ variable "server_name" {
   description = "The name of the server"
   default     = "default"
 }
+
+variable "database_host" {
+  type        = string
+  description = "The host of the db2 database"
+}
+
+variable "database_port" {
+  type        = string
+  description = "The port of the db2 database"
+}
+
+variable "database_name" {
+  type        = string
+  description = "The name of the db2 database"
+}
+
+variable "database_username" {
+  type        = string
+  description = "The username to connect to the db2 database"
+}
+
+variable "database_password" {
+  type        = string
+  description = "The password to connect to the db2 database"
+  sensitive   = true
+}
+
+variable "secret_name" {
+  type        = string
+  description = "The name of the secret that will be created"
+  default     = "db2-credentials"
+}

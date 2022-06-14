@@ -5,6 +5,8 @@ tags:
   - secret
   - database
   - gitops
+interfaces:
+  - github.com/cloud-native-toolkit/automation-modules#database-secret
 versions:
   - platforms:
       - kubernetes
@@ -19,6 +21,9 @@ versions:
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
             version: ">= 1.0.0"
+      - id: database
+        interface: github.com/cloud-native-toolkit/automation-modules#database
+        refs: []
     variables:
       - name: gitops_config
         moduleRef:
@@ -40,3 +45,23 @@ versions:
         moduleRef:
           id: gitops
           output: sealed_secrets_cert
+      - name: database_host
+        moduleRef:
+          id: database
+          output: host
+      - name: database_port
+        moduleRef:
+          id: database
+          output: port
+      - name: database_name
+        moduleRef:
+          id: database
+          output: database_name
+      - name: database_username
+        moduleRef:
+          id: database
+          output: username
+      - name: database_password
+        moduleRef:
+          id: database
+          output: password

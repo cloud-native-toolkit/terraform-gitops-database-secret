@@ -33,6 +33,7 @@ BRANCH=$(jq -r '.branch // "main"' gitops-output.json)
 SERVER_NAME=$(jq -r '.server_name // "default"' gitops-output.json)
 LAYER=$(jq -r '.layer_dir // "2-services"' gitops-output.json)
 TYPE=$(jq -r '.type // "base"' gitops-output.json)
+SECRET_NAME=$(jq -r '.secret_name // empty' gitops-output.json)
 
 mkdir -p .testrepo
 
@@ -44,11 +45,11 @@ find . -name "*"
 
 set -e
 
-validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "values.yaml"
+validate_gitops_content "${NAMESPACE}" "${LAYER}" "${SERVER_NAME}" "${TYPE}" "${COMPONENT_NAME}" "${SECRET_NAME}.yaml"
 
 check_k8s_namespace "${NAMESPACE}"
 
-#check_k8s_resource "${NAMESPACE}" "deployment" "${COMPONENT_NAME}"
+check_k8s_resource "${NAMESPACE}" "secret" "${SECRET_NAME}"
 
 cd ..
 rm -rf .testrepo
