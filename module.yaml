@@ -1,8 +1,9 @@
-name: ""
+name: database-secret
 type: gitops
-description: ""
+description: Module to store the connection information for a database (host, port, username, password, database name) in a secret for use in a cluster
 tags:
-  - tools
+  - secret
+  - database
   - gitops
 versions:
   - platforms:
