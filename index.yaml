@@ -1,0 +1,11 @@
+name: database-secret
+type: gitops
+description: >-
+  Module to store the connection information for a database (host, port,
+  username, password, database name) in a secret for use in a cluster
+tags:
+  - secret
+  - database
+  - gitops
+versions: []
+id: github.com/cloud-native-toolkit/terraform-gitops-database-secret
