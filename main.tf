@@ -18,7 +18,7 @@ locals {
 
 module setup_clis {
   source = "cloud-native-toolkit/clis/util"
-  version = "1.16.1"
+  version = "1.16.4"
 
   clis = ["kubectl"]
 }
